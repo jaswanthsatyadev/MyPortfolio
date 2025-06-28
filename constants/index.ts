@@ -7,6 +7,9 @@ import {
   RxLinkedinLogo,
 } from "react-icons/rx";
 
+import LinkedInIcon from "@/components/icons/LinkedInIcon";
+import GitHubIcon from "@/components/icons/GitHubIcon";
+
 export const SKILL_DATA = [
   {
     skill_name: "HTML",
@@ -90,19 +93,14 @@ export const SKILL_DATA = [
 
 export const SOCIALS = [
   {
-    name: "Instagram",
-    icon: RxInstagramLogo,
-    link: "https://instagram.com",
+    name: "LinkedIn",
+    icon: LinkedInIcon,
+    link: "https://www.linkedin.com/in/jaswanth-satya-dev/",
   },
   {
-    name: "Facebook",
-    icon: FaFacebook,
-    link: "https://facebook.com",
-  },
-  {
-    name: "Twitter",
-    icon: RxTwitterLogo,
-    link: "https://twitter.com",
+    name: "GitHub",
+    icon: GitHubIcon,
+    link: "https://github.com/jaswanthsatyadev",
   },
 ] as const;
 

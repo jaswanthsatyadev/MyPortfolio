@@ -2,8 +2,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
 import { LINKS, NAV_LINKS, SOCIALS } from "@/constants";
+import LinkedInIcon from "../icons/LinkedInIcon"; // Import your LinkedInIcon component
+import GitHubIcon from "../icons/GitHubIcon";   // Import your GitHubIcon component
+
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,7 +27,7 @@ export const Navbar = () => {
             draggable={false}
             className="cursor-pointer"
           />
-          <div className="hidden md:flex md:selffont-bold ml-[10px] text-gray-300">John Doe</div>
+          <div className="hidden md:flex md:selffont-bold ml-[10px] text-gray-300">Satya Dev</div>
         </Link>
 
         {/* Web Navbar */}
@@ -62,6 +64,7 @@ export const Navbar = () => {
               rel="noreferrer noopener"
               key={name}
             >
+              {/* Render the icon component directly */}
               <Icon className="h-6 w-6 text-white" />
             </Link>
           ))}
@@ -111,7 +114,8 @@ export const Navbar = () => {
                 rel="noreferrer noopener"
                 key={name}
               >
-                <Icon className="h-8 w-8 text-white" />
+                 {/* Render the icon component directly */}
+                <Icon className="h-6 w-6 text-white" />
               </Link>
             ))}
           </div>

@@ -1,10 +1,14 @@
 "use client";
 
+import Spline from '@splinetool/react-spline/next';
 import { SparklesIcon } from "@heroicons/react/24/solid";
-import { motion } from "framer-motion";
-import Image from "next/image";
+// import Image from "next/image";
+import { motion } from 'framer-motion';
 
 import {
+  // slideInFromLeft,
+  // slideInFromRight,
+  // slideInFromTop,
   slideInFromLeft,
   slideInFromRight,
   slideInFromTop,
@@ -30,23 +34,22 @@ export const HeroContent = () => {
 
         <motion.div
           variants={slideInFromLeft(0.5)}
-          className="flex flex-col gap-6 mt-6 text-6xl text-bold text-white max-w-[600px] w-auto h-auto"
+          className="flex flex-col gap-2 mt-6 text-3xl text-bold text-white max-w-[600px] w-auto h-auto"
         >
-          <span>
-            Providing{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-              the best
-            </span>{" "}
-            project experience.
+          Hi, I’m{' '}
+          <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 bg-clip-text text-transparent font-bold">
+ Satya – Dev
           </span>
+  I build AI-driven systems, automations, and develop battle-tested websites and applications.
+
         </motion.div>
 
         <motion.p
           variants={slideInFromLeft(0.8)}
           className="text-lg text-gray-400 my-5 max-w-[600px]"
         >
-          I&apos;m a Full Stack Software Engineer with experience in Website,
-          Mobile, and Software development. Check out my projects and skills.
+          I&apos;m a Full Stack Software Engineer with experience in
+          Artificial Intelligence, Automation, and Software development. Check out my projects and skills.
         </motion.p>
 
         <motion.a
@@ -57,18 +60,41 @@ export const HeroContent = () => {
         </motion.a>
       </div>
 
-      <motion.div
-        variants={slideInFromRight(0.8)}
-        className="w-full h-full flex justify-center items-center"
+ <motion.div
+ variants={slideInFromRight(0.8)}
+ className="w-full h-full flex justify-center items-center relative" // Added relative positioning for the container
+ >
+ {/* Add the Spline component here */}
+ <Spline scene="https://prod.spline.design/8Y2XVlma9kucPOyu/scene.splinecode" />
+ {/* Add the text to overlap the watermark */}
+ <div
+ style={{
+          transition: 'box-shadow 0.3s ease-in-out',
+          position: 'absolute',
+ bottom: '4%', // Adjusted for larger size and position and responsiveness
+ right: '3%',  // Adjusted for larger size and position and responsiveness
+          backgroundColor: '#333', // Dark background for the bubble
+          opacity: 1, // Fully opaque background
+          color: '#fff', // White text color
+ padding: '24px 36px', // Increased padding for ~3x size
+          borderRadius: '20px', // Rounded corners for the bubble
+ fontSize: '22px', // Adjusted font size
+ zIndex: 100, // Ensure text is well above the Spline scene
+          whiteSpace: 'nowrap', // Prevent text from wrapping
+          boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', // Initial subtle shadow
+ }}
+        onMouseEnter={e => {
+            e.currentTarget.style.boxShadow = '0 0 20px #ff00ff, 0 0 30px #8a2be2, 0 0 40px #00ffff'; // Neon glow on hover
+        }}
+        onMouseLeave={e => {
+            e.currentTarget.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)'; // Restore initial shadow on mouse leave
+        }}
       >
-        <Image
-          src="/hero-bg.svg"
-          alt="work icons"
-          height={650}
-          width={650}
-          draggable={false}
-          className="select-none"
-        />
+        <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 bg-clip-text text-transparent font-bold ">
+ Hi there !
+        </span>
+
+ </div>
       </motion.div>
     </motion.div>
   );
