@@ -3,7 +3,7 @@
 import Spline from '@splinetool/react-spline/next';
 import { SparklesIcon } from "@heroicons/react/24/solid";
 // import Image from "next/image";
-import { motion } from 'framer-motion';
+
 
 import {
   // slideInFromLeft,
@@ -16,26 +16,16 @@ import {
 
 export const HeroContent = () => {
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      className="flex flex-row items-center justify-center px-20 mt-40 w-full z-[20]"
-    >
+    <div className="flex flex-row items-center justify-center px-20 mt-40 w-full z-[20]">
       <div className="h-full w-full flex flex-col gap-5 justify-center m-auto text-start">
-        <motion.div
-          variants={slideInFromTop}
-          className="Welcome-box py-[8px] px-[7px] border border-[#7042f88b] opacity-[0.9]]"
-        >
+        <div className="Welcome-box py-[8px] px-[7px] border border-[#7042f88b] opacity-[0.9]]">
           <SparklesIcon className="text-[#b49bff] mr-[10px] h-5 w-5" />
           <h1 className="Welcome-text text-[13px]">
-            Fullstack Developer Portfolio
+            Developer Portfolio
           </h1>
         </motion.div>
 
-        <motion.div
-          variants={slideInFromLeft(0.5)}
-          className="flex flex-col gap-2 mt-6 text-3xl text-bold text-white max-w-[600px] w-auto h-auto"
-        >
+        <div className="flex flex-col gap-2 mt-6 text-3xl text-bold text-white max-w-[600px] w-auto h-auto">
           Hi, I’m{' '}
           <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 bg-clip-text text-transparent font-bold">
  Satya – Dev
@@ -44,10 +34,7 @@ export const HeroContent = () => {
 
         </motion.div>
 
-        <motion.p
-          variants={slideInFromLeft(0.8)}
-          className="text-lg text-gray-400 my-5 max-w-[600px]"
-        >
+        <p className="text-lg text-gray-400 my-5 max-w-[600px]">
           I&apos;m a Full Stack Software Engineer with experience in
           Artificial Intelligence, Automation, and Software development. Check out my projects and skills.
         </motion.p>
