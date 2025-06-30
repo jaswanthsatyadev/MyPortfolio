@@ -163,7 +163,7 @@ export const PROJECTS = [
     description:
       "An AI‑powered smart ticket verification system for public buses using real-time selfie verification against CCTV frames to reduce fare evasion and speed up boarding.",
     link: "https://app--tsrtc-e-ticket-e7682f18.base44.app/login?from_url=https://app--tsrtc-e-ticket-e7682f18.base44.app/Auth&app_id=68550138c423788fe7682f18",
-    tags: ["Genkit", "Next.js", "MongoDB", "Face Recognition"],
+    tags: ["API", "Next.js", "MongoDB", "Typescript"],
   },
   {
     title: "AutoFare - AI Backend",
@@ -171,7 +171,8 @@ export const PROJECTS = [
     description:
       "High-performance backend enabling real-time face verification between a passenger’s selfie and CCTV snapshots from inside public buses, using face-api.js.",
     link: "https://auto-fare.vercel.app/",
-    tags: ["Node.js", "face-api.js", "TensorFlow", "MongoDB"],
+    tags: ["Node.js", "Face Recognition", "Genkit", "MongoDB"],
+
   },
   {
     title: "AI Learning Hub",
@@ -179,7 +180,7 @@ export const PROJECTS = [
     description:
       "A personalized learning platform powered by AI that helps users master AI, ML, and Data Science with smart roadmaps and curated resources.",
     link: "https://ai-learing-hub.netlify.app/",
-    tags: ["Next.js", "GPT-4", "LangChain", "Firebase"],
+    tags: ["Next.js", "llama", "HuggingFace", "Supabase"],
   },
 ];
 

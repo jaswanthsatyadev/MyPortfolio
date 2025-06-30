@@ -4,11 +4,12 @@ import "./globals.css";
 import { StarsCanvas } from "@/components/main/star-background";
 import { Navbar } from "@/components/main/navbar";
 import { Footer } from "@/components/main/footer";
+import { CustomCursor } from "@/components/sub/CustomCursor"; // Import the new component
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Jaswanth Satya Dev Portfolio",
+  title: "Jaswanth Satyadev Portfolio",
   description: "A portfolio showcasing projects and skills.",
 };
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}
       >
+        <CustomCursor /> {/* Add the cursor component here */}
         <StarsCanvas />
         <Navbar />
         {children}
