@@ -10,26 +10,20 @@ import {
 } from "@/lib/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
 
-
 // Custom Hook to detect if the user is on a mobile device
 const useIsMobile = () => {
-    const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-    useEffect(() => {
-        // Check on initial load
-        const checkScreenSize = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-        checkScreenSize();
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
-        // Add listener for screen size changes
-        window.addEventListener("resize", checkScreenSize);
-
-        // Cleanup listener on component unmount
-        return () => window.removeEventListener("resize", checkScreenSize);
-    }, []);
-
-    return isMobile;
+  return isMobile;
 };
 
 // This dynamic import is correct.
@@ -47,7 +41,7 @@ const LoadingSpinner = () => (
   </div>
 );
 
-// Your personalized HeroText component - I've kept your changes.
+// Your personalized HeroText component
 const HeroText = () => (
   <div className="h-full w-full flex flex-col gap-5 justify-center m-auto text-center lg:text-start">
     <motion.div
@@ -91,28 +85,28 @@ const HeroText = () => (
   </div>
 );
 
-// The main Hero component with corrected layout for the video
+// The main Hero component with the responsive fix
 export const Hero = () => {
-  const isMobile = useIsMobile(); // <-- The logic is called here
+  const isMobile = useIsMobile();
 
   return (
-    <section className="relative flex flex-col h-screen w-full" id="about-me">
-        
-      {/* Conditionally render the video based on screen size */}
+    // **THE FIX:** The main section is no longer h-screen. It's a simple relative container.
+    <section className="relative w-full" id="about-me">
+
+      {/* Conditionally render the video only on non-mobile devices */}
       {!isMobile && (
         <video
-            autoPlay
-            muted
-            loop
-            // Your exact positioning classes are preserved
-            className="rotate-180 absolute top-[-420px] left-0 w-full h-full object-cover -z-20"
+          autoPlay
+          muted
+          loop
+          className="rotate-180 absolute top-[-280px] md:top-[-320px] lg:top-[-350px] xl:top-[-380px] 2xl:top-[-400px] left-0 w-full h-full object-cover -z-10"
         >
-            <source src="/videos/blackhole.webm" type="video/webm" />
+          <source src="/videos/blackhole.webm" type="video/webm" />
         </video>
       )}
 
-      {/* This container holds all your content and layers it ON TOP of the video. */}
-      <div className="relative flex items-center justify-center w-full h-full z-[20]">
+      {/* Content container - It now defines the height of the hero section. */}
+      <div className="relative flex items-center justify-center w-full min-h-screen z-[20]">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl px-10">
           <div className="w-full lg:w-1/2">
             <HeroText />
