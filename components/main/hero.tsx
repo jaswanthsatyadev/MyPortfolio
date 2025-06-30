@@ -50,7 +50,7 @@ const HeroText = () => (
     >
       <SparklesIcon className="text-[#b49bff] mr-[10px] h-5 w-5" />
       <h1 className="Welcome-text text-[13px]">
-        Developer Portfolio
+        Fullstack Developer Portfolio
       </h1>
     </motion.div>
 
@@ -85,12 +85,13 @@ const HeroText = () => (
   </div>
 );
 
-// The main Hero component with the responsive fix
+// The main Hero component with the corrected structure
 export const Hero = () => {
   const isMobile = useIsMobile();
 
   return (
-    // **THE FIX:** The main section is no longer h-screen. It's a simple relative container.
+    // **THE FIX:** The main section is now a simple relative container.
+    // The fixed height has been removed to allow the video to be positioned freely.
     <section className="relative w-full" id="about-me">
 
       {/* Conditionally render the video only on non-mobile devices */}
@@ -105,7 +106,9 @@ export const Hero = () => {
         </video>
       )}
 
-      {/* Content container - It now defines the height of the hero section. */}
+      {/* **THE FIX:** The content container now controls the height of the hero section.
+          'min-h-screen' ensures it's at least as tall as the viewport.
+      */}
       <div className="relative flex items-center justify-center w-full min-h-screen z-[20]">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl px-10">
           <div className="w-full lg:w-1/2">
