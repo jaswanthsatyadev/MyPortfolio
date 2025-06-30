@@ -149,3 +149,14 @@ html {
 .animate-float {
     animation: float 5s ease-in-out infinite;
 }
+/* --- Custom Pulsing Cursor for Typewriter --- */
+
+/* This targets the cursor element created by the react-type-animation library */
+.custom-type-animation-cursor::after {
+  content: '|';
+  display: inline-block;
+  animation: pulse 1.2s infinite; /* Uses Tailwind's pulse keyframes */
+  color: #67e8f9; /* A bright cyan color */
+  font-weight: 300;
+  margin-left: 4px;
+}

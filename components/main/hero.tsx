@@ -9,20 +9,20 @@ import {
   slideInFromTop,
 } from "@/lib/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
-import { Typewriter } from "../sub/Typewriter"; // Import the new component
+import { Typewriter } from "../sub/Typewriter";
 
 // Custom Hook to detect if the user is on a mobile device
 const useIsMobile = () => {
-    const [isMobile, setIsMobile] = useState(false);
-    useEffect(() => {
-        const checkScreenSize = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-        checkScreenSize();
-        window.addEventListener("resize", checkScreenSize);
-        return () => window.removeEventListener("resize", checkScreenSize);
-    }, []);
-    return isMobile;
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+  return isMobile;
 };
 
 const HeroContent = dynamic(
@@ -38,19 +38,21 @@ const LoadingSpinner = () => (
   </div>
 );
 
-// The HeroText component now includes the Typewriter
+// The HeroText component with its slide-in animations
 const HeroText = () => (
-  <div className="h-full w-full flex flex-col gap-5 justify-center m-auto text-center lg:text-start">
-    <motion.div
-      variants={slideInFromTop}
-      className="Welcome-box py-[8px] px-[7px] border border-[#7042f88b] opacity-[0.9] mx-auto lg:mx-0"
-    >
-      <SparklesIcon className="text-[#b49bff] mr-[10px] h-5 w-5" />
-      <h1 className="Welcome-text text-[13px]">
-        Fullstack Developer Portfolio
-      </h1>
+  <motion.div
+    initial="hidden"
+    animate="visible"
+    className="h-full w-full flex flex-col gap-5 justify-center m-auto text-center lg:text-start"
+  >
+    <motion.div variants={slideInFromTop}>
+      <div className="Welcome-box py-[8px] px-[7px] border border-[#7042f88b] opacity-[0.9] mx-auto lg:mx-0">
+        <SparklesIcon className="text-[#b49bff] mr-[10px] h-5 w-5" />
+        <h1 className="Welcome-text text-[13px]">
+          Fullstack Developer Portfolio
+        </h1>
+      </div>
     </motion.div>
-
     <motion.div
       variants={slideInFromLeft(0.5)}
       className="flex flex-col gap-6 mt-6 text-4xl md:text-6xl font-bold text-white max-w-[600px] w-auto h-auto"
@@ -65,24 +67,22 @@ const HeroText = () => (
         </div>
       </span>
     </motion.div>
-
-    {/* The old paragraph is replaced with our new Typewriter component */}
     <motion.div variants={slideInFromLeft(0.8)}>
-        <Typewriter />
+      <Typewriter />
     </motion.div>
-
     <motion.a
       variants={slideInFromLeft(1)}
       className="py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px] mx-auto lg:mx-0"
     >
       Learn More!
     </motion.a>
-  </div>
+  </motion.div>
 );
 
 // The main Hero component
 export const Hero = () => {
   const isMobile = useIsMobile();
+  const [isSplineLoaded, setIsSplineLoaded] = useState(false);
 
   return (
     <section className="relative flex flex-col h-screen w-full overflow-hidden" id="about-me">
@@ -99,14 +99,21 @@ export const Hero = () => {
 
       <div className="relative flex items-center justify-center w-full h-full z-[20]">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl px-10">
-          {/* **THE FIX:** Corrected lg:w-12 to lg:w-1/2 */}
           <div className="w-full lg:w-1/2">
             <HeroText />
           </div>
           <div className="w-full lg:w-1/2 h-[650px] mt-10 lg:mt-0">
-            <Suspense fallback={<LoadingSpinner />}>
-              <HeroContent />
-            </Suspense>
+            {/* **THE FIX:** The animation is now directly controlled by the loading state */}
+            <motion.div
+              initial="hidden"
+              animate={isSplineLoaded ? "visible" : "hidden"}
+              variants={slideInFromRight(0.8)}
+              className="w-full h-full"
+            >
+              <Suspense fallback={<LoadingSpinner />}>
+                <HeroContent onLoad={() => setIsSplineLoaded(true)} />
+              </Suspense>
+            </motion.div>
           </div>
         </div>
       </div>
