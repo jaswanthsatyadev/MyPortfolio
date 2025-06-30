@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Spline from "@splinetool/react-spline/next"; // Added Spline import
+const Spline = React.lazy(() => import("@splinetool/react-spline")); // Added Spline import and lazy loading
 
 // Your personalized links
 const myLinks = [
