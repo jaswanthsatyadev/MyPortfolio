@@ -1,55 +1,41 @@
-"use client";
-
 import { SkillDataProvider } from "@/components/sub/skill-data-provider";
 import { SkillText } from "@/components/sub/skill-text";
-import { motion } from "framer-motion";
 import { ALL_SKILLS } from "@/constants";
 
+// Define the 'Skill' type
 type Skill = typeof ALL_SKILLS[number];
 
-const SkillRow = ({
-  skills,
-  direction,
-}: {
-  skills: Skill[];
-  direction: "left" | "right";
-}) => {
-  const variants = {
-    animate: {
-      x: direction === "left" ? ["0%", "-100%"] : ["0%", "100%"],
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: 600,
-          ease: "linear",
-        },
-      },
-    },
-  };
-
-  // 🔁 Create reversed skill set only if direction is right
-  const baseSkills = direction === "right" ? [...skills].reverse() : skills;
-  const repeatedSkills = Array(10).fill(baseSkills).flat();
+// The SkillRow component now renders the skill list twice for a seamless loop
+const SkillRow = ({ skills, direction }: { skills: Skill[]; direction: "left" | "right" }) => {
+  const animationClass = direction === "left" ? "animate-scroll-left" : "animate-scroll-right";
 
   return (
-    <motion.div
-      className="flex flex-row gap-5 items-center"
-      variants={variants}
-      animate="animate"
-      style={{ width: "1000%" }}
-    >
-      {repeatedSkills.map((skill, i) => (
-        <SkillDataProvider
-          key={`${skill.skill_name}-${i}`}
-          src={skill.image}
-          name={skill.skill_name}
-          width={skill.width}
-          height={skill.height}
-          index={i}
-        />
+    <div className={`flex ${animationClass}`}>
+      {/* Render the skills list the first time */}
+      {skills.map((skill) => (
+        <div key={skill.skill_name} className="flex-shrink-0 px-8">
+          <SkillDataProvider
+            src={skill.image}
+            name={skill.skill_name}
+            width={skill.width}
+            height={skill.height}
+            index={0} // index is not needed for this animation type
+          />
+        </div>
       ))}
-    </motion.div>
+      {/* Render the exact same list a second time to create the infinite effect */}
+      {skills.map((skill) => (
+        <div key={`${skill.skill_name}-clone`} aria-hidden="true" className="flex-shrink-0 px-8">
+          <SkillDataProvider
+            src={skill.image}
+            name={skill.skill_name}
+            width={skill.width}
+            height={skill.height}
+            index={0}
+          />
+        </div>
+      ))}
+    </div>
   );
 };
 
@@ -64,13 +50,10 @@ export const Skills = () => {
       className="flex flex-col items-center justify-center gap-3 h-full relative overflow-hidden py-20"
     >
       <SkillText />
-
-      <div className="flex flex-col gap-5 mt-4 w-full overflow-hidden">
+      <div className="flex flex-col gap-5 mt-4 w-full">
         <SkillRow skills={firstHalf} direction="left" />
-        <SkillRow skills={secondHalf} direction="left" />
+        <SkillRow skills={secondHalf} direction="right" />
       </div>
-
-      {/* BG VIDEO */}
       <div className="w-full h-full absolute">
         <div className="w-full h-full z-[-10] opacity-30 absolute flex items-center justify-center bg-cover">
           <video

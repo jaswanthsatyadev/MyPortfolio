@@ -115,7 +115,7 @@ export const ALL_SKILLS = [
   },
   {
     skill_name: "SQL",
-    image: "/skills/sql.svg",
+    image: "/skills/light-prisma-svgrepo-com.svg",
     width: 62,
     height: 62,
   },

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import {
@@ -9,6 +9,28 @@ import {
   slideInFromTop,
 } from "@/lib/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
+
+
+// Custom Hook to detect if the user is on a mobile device
+const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        // Check on initial load
+        const checkScreenSize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkScreenSize();
+
+        // Add listener for screen size changes
+        window.addEventListener("resize", checkScreenSize);
+
+        // Cleanup listener on component unmount
+        return () => window.removeEventListener("resize", checkScreenSize);
+    }, []);
+
+    return isMobile;
+};
 
 // This dynamic import is correct.
 const HeroContent = dynamic(
@@ -71,31 +93,35 @@ const HeroText = () => (
 
 // The main Hero component with corrected layout for the video
 export const Hero = () => {
-  return (
-    // 1. The main section is now a relative container with a full screen height.
-    <section className="relative flex flex-col h-screen w-full" id="about-me">
-      {/* 2. The video is positioned absolutely to fill the entire section. */}
-      <video
-        autoPlay
-        muted
-        loop
-        // Correct classes to make it a true background
-        className="rotate-180 absolute top-[-420px] left-0 w-full h-full object-cover -z-20"
-      >
-        <source src="/videos/blackhole.webm" type="video/webm" />
-      </video>
+  const isMobile = useIsMobile(); // <-- The logic is called here
 
-      {/* 3. This container holds all your content and layers it ON TOP of the video. */}
+  return (
+    <section className="relative flex flex-col h-screen w-full" id="about-me">
+        
+      {/* Conditionally render the video based on screen size */}
+      {!isMobile && (
+        <video
+            autoPlay
+            muted
+            loop
+            // Your exact positioning classes are preserved
+            className="rotate-180 absolute top-[-420px] left-0 w-full h-full object-cover -z-20"
+        >
+            <source src="/videos/blackhole.webm" type="video/webm" />
+        </video>
+      )}
+
+      {/* This container holds all your content and layers it ON TOP of the video. */}
       <div className="relative flex items-center justify-center w-full h-full z-[20]">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl px-10">
-            <div className="w-full lg:w-1/2">
-                <HeroText />
-            </div>
-            <div className="w-full lg:w-1/2 h-[650px] mt-10 lg:mt-0">
-                <Suspense fallback={<LoadingSpinner />}>
-                    <HeroContent />
-                </Suspense>
-            </div>
+          <div className="w-full lg:w-1/2">
+            <HeroText />
+          </div>
+          <div className="w-full lg:w-1/2 h-[650px] mt-10 lg:mt-0">
+            <Suspense fallback={<LoadingSpinner />}>
+              <HeroContent />
+            </Suspense>
+          </div>
         </div>
       </div>
     </section>
