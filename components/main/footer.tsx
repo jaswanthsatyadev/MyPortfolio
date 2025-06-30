@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-const Spline = React.lazy(() => import("@splinetool/react-spline")); // Added Spline import and lazy loading
+const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
 // Your personalized links
 const myLinks = [
@@ -15,21 +15,19 @@ export const Footer = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   return (
-    // Added more top margin (mt-64) to create space from the projects section
     <div className="w-full h-full bg-transparent text-gray-200 shadow-lg p-4 md:p-8 relative mt-64">
-      {/* Container for the UFO Spline scene */}
-      <div className="w-full absolute -top-[450px] left-0 z-10 h-[800px]">
-        {/* We now render the Spline component directly inside Suspense */}
-        <React.Suspense fallback={<div>Loading 3D Model...</div>}>
-          <Spline scene="https://prod.spline.design/w-6vM6wIAfHOZuLN/scene.splinecode" />
-        </React.Suspense>
+      {/* **THE FIX:** The UFO container now has overflow-hidden to crop the logo */}
+      <div className="w-full absolute -top-[450px] left-0 z-10 h-[800px] overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[110%]">
+            <React.Suspense fallback={null}>
+              <Spline scene="https://prod.spline.design/w-6vM6wIAfHOZuLN/scene.splinecode" />
+            </React.Suspense>
+        </div>
       </div>
 
-      {/* Container for all the text content, layered on top of the UFO */}
       <div className="relative z-20 w-full flex flex-col items-center justify-center m-auto">
         <div className="w-full h-full flex flex-col md:flex-row items-center justify-around flex-wrap">
           
-          {/* Personal Info Section */}
           <div className="min-w-[200px] h-auto flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0">
             <h3 className="font-bold text-lg mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500"
                 style={{ textShadow: '0 0 10px rgba(192, 77, 246, 0.5)' }}>
@@ -40,7 +38,6 @@ export const Footer = () => {
             </p>
           </div>
 
-          {/* Social Links Section */}
           <div className="min-w-[200px] h-auto flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0">
             <h3 className="font-bold text-lg mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500"
                 style={{ textShadow: '0 0 10px rgba(192, 77, 246, 0.5)' }}>
@@ -60,7 +57,6 @@ export const Footer = () => {
             ))}
           </div>
 
-          {/* Support Section */}
           <div className="min-w-[200px] h-auto flex flex-col items-center md:items-start text-center md:text-left">
             <h3 className="font-bold text-lg mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500"
                 style={{ textShadow: '0 0 10px rgba(192, 77, 246, 0.5)' }}>
@@ -81,7 +77,6 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* UPI QR Code Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
           <div className="bg-[#030014] p-8 rounded-lg shadow-2xl border border-purple-800 relative">
