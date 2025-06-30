@@ -147,30 +147,43 @@ export const SOCIALS = [
 ] as const;
 
 
-
+// Updated Projects Data
 export const PROJECTS = [
   {
-    title: "Modern Next.js 14 Portfolio",
+    title: "MediMate AI",
+    image: "/projects/project1.jpg",
     description:
-      'Embark on a journey through my professional evolution with the "Modern Next.js Portfolio" - a dynamic showcase of my skills, experiences, and passion for web development. Crafted with precision and powered by Next.js, this portfolio is more than just a static display; it\'s an immersive experience that reflects the cutting edge of modern web technologies.',
-    image: "/projects/project-1.png",
-    link: "https://example.com",
+      "An AI-powered virtual health assistant that helps users check symptoms, track meds, and get instant health insights. Your personal ChatGPT for healthcare.",
+    link: "https://medimate-7od6.vercel.app/health-analysis",
+    tags: ["Genkit", "Next.js", "Firebase", "Gemini"],
   },
   {
-    title: "Interactive Cards Portfolio",
+    title: "AutoFare - Bus Booking System",
+    image: "/projects/project2.jpg",
     description:
-      'Step into the extraordinary world of my professional journey through the "Interactive Cards Portfolio" - an innovative and visually captivating platform that redefines the traditional portfolio experience. Ditching the conventional static layout, this portfolio leverages interactive cards to showcase my skills, projects, and personality in an engaging and dynamic manner.',
-    image: "/projects/project-2.png",
-    link: "https://example.com",
+      "An AI‑powered smart ticket verification system for public buses using real-time selfie verification against CCTV frames to reduce fare evasion and speed up boarding.",
+    link: "https://app--tsrtc-e-ticket-e7682f18.base44.app/login?from_url=https://app--tsrtc-e-ticket-e7682f18.base44.app/Auth&app_id=68550138c423788fe7682f18",
+    tags: ["Genkit", "Next.js", "MongoDB", "Face Recognition"],
   },
   {
-    title: "Space Themed Website",
+    title: "AutoFare - AI Backend",
+    image: "/projects/project3.jpg",
     description:
-      'Embark on an interstellar journey with my "Space Themed Website", a mesmerizing space-themed website that invites you to explore the cosmic wonders beyond our world. Immerse yourself in an awe-inspiring digital experience that blends cutting-edge design with the mysteries of the universe.',
-    image: "/projects/project-3.png",
-    link: "https://example.com",
+      "High-performance backend enabling real-time face verification between a passenger’s selfie and CCTV snapshots from inside public buses, using face-api.js.",
+    link: "https://auto-fare.vercel.app/",
+    tags: ["Node.js", "face-api.js", "TensorFlow", "MongoDB"],
   },
-] as const;
+  {
+    title: "AI Learning Hub",
+    image: "/projects/project4.jpg",
+    description:
+      "A personalized learning platform powered by AI that helps users master AI, ML, and Data Science with smart roadmaps and curated resources.",
+    link: "https://ai-learing-hub.netlify.app/",
+    tags: ["Next.js", "GPT-4", "LangChain", "Firebase"],
+  },
+];
+
+
 
 export const FOOTER_DATA = [
   {
