@@ -9,24 +9,22 @@ import {
   slideInFromTop,
 } from "@/lib/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
+import { Typewriter } from "../sub/Typewriter"; // Import the new component
 
 // Custom Hook to detect if the user is on a mobile device
 const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
-
-  return isMobile;
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkScreenSize();
+        window.addEventListener("resize", checkScreenSize);
+        return () => window.removeEventListener("resize", checkScreenSize);
+    }, []);
+    return isMobile;
 };
 
-// This dynamic import is correct.
 const HeroContent = dynamic(
   () => import("../sub/hero-content").then((mod) => mod.HeroContent),
   {
@@ -34,14 +32,13 @@ const HeroContent = dynamic(
   }
 );
 
-// A loading spinner for the Suspense fallback
 const LoadingSpinner = () => (
   <div className="w-full h-full flex justify-center items-center">
     <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-white"></div>
   </div>
 );
 
-// Your personalized HeroText component
+// The HeroText component now includes the Typewriter
 const HeroText = () => (
   <div className="h-full w-full flex flex-col gap-5 justify-center m-auto text-center lg:text-start">
     <motion.div
@@ -69,13 +66,11 @@ const HeroText = () => (
       </span>
     </motion.div>
 
-    <motion.p
-      variants={slideInFromLeft(0.8)}
-      className="text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-cyan-300 my-5 max-w-[600px] tracking-wide"
-    >
-      I have experience in building AI-driven systems, automations and
-      battle-tested software applications with elegance and speed.
-    </motion.p>
+    {/* The old paragraph is replaced with our new Typewriter component */}
+    <motion.div variants={slideInFromLeft(0.8)}>
+        <Typewriter />
+    </motion.div>
+
     <motion.a
       variants={slideInFromLeft(1)}
       className="py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px] mx-auto lg:mx-0"
@@ -85,16 +80,12 @@ const HeroText = () => (
   </div>
 );
 
-// The main Hero component with the corrected structure
+// The main Hero component
 export const Hero = () => {
   const isMobile = useIsMobile();
 
   return (
-    // **THE FIX:** The main section is now a simple relative container.
-    // The fixed height has been removed to allow the video to be positioned freely.
-    <section className="relative w-full" id="about-me">
-
-      {/* Conditionally render the video only on non-mobile devices */}
+    <section className="relative flex flex-col h-screen w-full overflow-hidden" id="about-me">
       {!isMobile && (
         <video
           autoPlay
@@ -106,11 +97,9 @@ export const Hero = () => {
         </video>
       )}
 
-      {/* **THE FIX:** The content container now controls the height of the hero section.
-          'min-h-screen' ensures it's at least as tall as the viewport.
-      */}
-      <div className="relative flex items-center justify-center w-full min-h-screen z-[20]">
+      <div className="relative flex items-center justify-center w-full h-full z-[20]">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl px-10">
+          {/* **THE FIX:** Corrected lg:w-12 to lg:w-1/2 */}
           <div className="w-full lg:w-1/2">
             <HeroText />
           </div>
