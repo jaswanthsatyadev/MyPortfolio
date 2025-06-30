@@ -20,7 +20,7 @@ export const Footer = () => {
       {/* Container for the UFO Spline scene */}
       <div className="w-full absolute -top-[450px] left-0 z-10 h-[800px]">
         {/* We now render the Spline component directly inside Suspense */}
-        <React.Suspense fallback={null}>
+        <React.Suspense fallback={<div>Loading 3D Model...</div>}>
           <Spline scene="https://prod.spline.design/w-6vM6wIAfHOZuLN/scene.splinecode" />
         </React.Suspense>
       </div>
