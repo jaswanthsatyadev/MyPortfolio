@@ -91,3 +91,70 @@ html {
 .animate-scroll-right {
   animation: scroll-right 80s linear infinite;
 }
+/* --- Rotating Neon Border for Project Cards --- */
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-border {
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* "Zero-gravity" floating animation with more noticeable movement */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    /* Increased the distance to make the float more visible */
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.neon-card {
+  position: relative;
+  z-index: 10;
+  border-radius: 12px; /* The outer radius for the glow */
+}
+
+/* The rotating border pseudo-element */
+.neon-card::before {
+  content: '';
+  position: absolute;
+  z-index: -3;
+  top: -25px; 
+  left: -3px;
+  right: -3px;
+  bottom: -25px;
+  background: conic-gradient(
+    from var(--angle),
+    #a855f7, /* Purple */
+    #ec4899, /* Pink */
+    #38bdf8, /* Cyan */
+    #a855f7  /* Loop back to Purple */
+  );
+  border-radius: inherit;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  animation: rotate-border 3s linear infinite paused;
+}
+
+.neon-card:hover::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+/* Class to apply the floating animation */
+.animate-float {
+    /* Adjusted the timing for a smoother feel */
+    animation: float 5s ease-in-out infinite;
+}
