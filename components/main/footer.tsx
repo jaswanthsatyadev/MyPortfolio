@@ -6,7 +6,7 @@ import Spline from '@splinetool/react-spline/next';
 export const Footer = () => {
   return (
     <div className="w-full h-full bg-transparent text-gray-200 shadow-lg p-[15px]">
-      <div className="w-full h-[200px] relative">
+      <div className="w-full h-[800px] relative">
         <Spline 
           scene="https://prod.spline.design/w-6vM6wIAfHOZuLN/scene.splinecode"
           className="w-full h-full"
