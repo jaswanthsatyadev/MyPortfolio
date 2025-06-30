@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Tilt } from "react-tilt"; // Import the Tilt component
+import { Tilt } from "react-tilt";
 
 type ProjectCardProps = {
   src: string;
@@ -20,13 +20,12 @@ export const ProjectCard = ({ src, title, description, link, tags }: ProjectCard
     animate: { y: 0, opacity: 1 },
   };
 
-  // Configuration options for the tilt effect
   const tiltOptions = {
-    max: 20,
-    scale: 1.03,
-    speed: 400,
+    max: 15,
+    scale: 1.02,
+    speed: 500,
     glare: true,
-    "max-glare": 0.5,
+    "max-glare": 0.2,
   };
 
   return (
@@ -38,7 +37,6 @@ export const ProjectCard = ({ src, title, description, link, tags }: ProjectCard
       transition={{ duration: 0.5, delay: 0.1 }}
       className="w-full h-full animate-float"
     >
-      {/* The Tilt component wraps everything to provide the 3D effect */}
       <Tilt options={tiltOptions} className="w-full h-full">
         <Link
           href={link}
@@ -46,25 +44,26 @@ export const ProjectCard = ({ src, title, description, link, tags }: ProjectCard
           rel="noreferrer noopener"
           className="neon-card block w-full h-full"
         >
+          {/* The main card body with the glass effect */}
           <div
-            className="w-full h-full bg-[#1a1a2e] p-1 rounded-[10px]"
+            className="w-full h-full bg-[#0f172a]/60 backdrop-blur-md border border-cyan-500/20 p-4 rounded-lg shadow-xl"
           >
             <Image
               src={src}
               alt={title}
               width={1000}
               height={1000}
-              className="w-full h-auto rounded-t-lg object-cover"
+              className="w-full h-auto rounded-md object-cover"
             />
 
-            <div className="relative p-6">
+            <div className="relative mt-4">
               <h1 className="text-2xl font-semibold text-white">{title}</h1>
-              <p className="mt-2 text-gray-300 text-sm">{description}</p>
+              <p className="mt-2 text-gray-400 text-sm">{description}</p>
               <div className="flex flex-wrap mt-4 gap-2">
                 {tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-1 bg-purple-900/50 text-purple-300 text-xs rounded-full"
+                    className="px-3 py-1 bg-cyan-900/50 text-cyan-300 text-xs font-semibold rounded-full"
                   >
                     {tag}
                   </span>
