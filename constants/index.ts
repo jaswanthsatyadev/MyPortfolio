@@ -151,7 +151,7 @@ export const SOCIALS = [
 export const PROJECTS = [
   {
     title: "MediMate AI",
-    image: "/projects/project1.jpg",
+    image: "/projects/project1.png",
     description:
       "An AI-powered virtual health assistant that helps users check symptoms, track meds, and get instant health insights. Your personal ChatGPT for healthcare.",
     link: "https://medimate-7od6.vercel.app/health-analysis",
@@ -159,7 +159,7 @@ export const PROJECTS = [
   },
   {
     title: "AutoFare - Bus Booking System",
-    image: "/projects/project2.jpg",
+    image: "/projects/project2.png",
     description:
       "An AI‑powered smart ticket verification system for public buses using real-time selfie verification against CCTV frames to reduce fare evasion and speed up boarding.",
     link: "https://app--tsrtc-e-ticket-e7682f18.base44.app/login?from_url=https://app--tsrtc-e-ticket-e7682f18.base44.app/Auth&app_id=68550138c423788fe7682f18",
@@ -167,7 +167,7 @@ export const PROJECTS = [
   },
   {
     title: "AutoFare - AI Backend",
-    image: "/projects/project3.jpg",
+    image: "/projects/project3.png",
     description:
       "High-performance backend enabling real-time face verification between a passenger’s selfie and CCTV snapshots from inside public buses, using face-api.js.",
     link: "https://auto-fare.vercel.app/",
@@ -175,7 +175,7 @@ export const PROJECTS = [
   },
   {
     title: "AI Learning Hub",
-    image: "/projects/project4.jpg",
+    image: "/projects/project4.png",
     description:
       "A personalized learning platform powered by AI that helps users master AI, ML, and Data Science with smart roadmaps and curated resources.",
     link: "https://ai-learing-hub.netlify.app/",
