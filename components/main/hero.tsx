@@ -85,7 +85,7 @@ export const Hero = () => {
   const [isSplineLoaded, setIsSplineLoaded] = useState(false);
 
   return (
-    <section className="relative flex flex-col h-screen w-full overflow-hidden" id="about-me">
+    <section className="relative flex flex-col h-screen w-full overflow-hidden" id="home">
       {!isMobile && (
         <video
           autoPlay

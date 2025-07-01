@@ -9,7 +9,7 @@ const About = () => {
     <motion.section
       initial="hidden"
       animate="visible"
-      id="about"
+      id="about-me"
       className="flex flex-col items-center justify-center gap-3 py-24" // Adjusted padding and gap
     >
       <h1 className="text-[40px] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500 py-10">
@@ -19,10 +19,10 @@ const About = () => {
         {/* Left Side: Image with Neon Border */}
         <motion.div
           variants={slideInFromLeft(0.5)}
-          className="relative w-[300px] h-[600px] md:w-[350px] md:h-[750px] lg:w-[400px] lg:h-[800px]" // Increased height
+          className="relative w-[300px] h-[600px] md:w-[350px] md:h-[650px] lg:w-[400px] lg:h-[700px]" // Increased height
         >
           <div className="w-full h-full relative p-[2px]">
-            <div className="absolute inset-0 rounded-2xl bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)] animate-spin-slow" />
+            <div className="absolute inset-0 rounded-2xl bg-[conic-gradient(from_90deg_at_50%_50%,#ec4899_0%,#8b5cf6_33%,#3b82f6_66%,#ec4899_100%)] animate-spin-slow" />
             <div className="h-full w-full relative rounded-2xl bg-gray-900/80 p-2">
               <Image
                 src="/satyadev.jpg"
