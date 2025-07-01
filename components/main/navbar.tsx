@@ -22,10 +22,10 @@ export const Navbar = () => {
           <Image
             src="/logo.png"
             alt="Logo"
-            width={70}
-            height={70}
+            width={50}
+            height={50}
             draggable={false}
-            className="cursor-pointer"
+            className="cursor-pointer rounded-full"
           />
           <div className="hidden md:flex md:selffont-bold ml-[10px] text-gray-300">Satya Dev</div>
         </Link>
