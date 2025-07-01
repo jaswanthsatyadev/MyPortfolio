@@ -182,6 +182,14 @@ export const PROJECTS = [
     link: "https://ai-learing-hub.netlify.app/",
     tags: ["Next.js", "llama", "HuggingFace", "Supabase"],
   },
+  {
+    title: "Sanctuary Sphere",
+    image: "/projects/project5.png",
+    description:
+      "This website is made completely using HTML and Vanilla CSS .",
+    link: "https://sanctuary-sphere.vercel.app/",
+    tags: [ "HTML", "CSS Magic"],
+  },
 ];
 
 

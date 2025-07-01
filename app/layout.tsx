@@ -4,12 +4,12 @@ import "./globals.css";
 import { StarsCanvas } from "@/components/main/star-background";
 import { Navbar } from "@/components/main/navbar";
 import { Footer } from "@/components/main/footer";
-import { CustomCursor } from "@/components/sub/CustomCursor"; // Import the new component
+import { CustomCursor } from "@/components/sub/CustomCursor"; 
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Jaswanth Satyadev Portfolio",
+  title: "Jaswanth Satya Dev Portfolio",
   description: "A portfolio showcasing projects and skills.",
 };
 
