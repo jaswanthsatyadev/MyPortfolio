@@ -40,19 +40,13 @@ const About = () => {
           variants={slideInFromRight(0.5)}
           className="flex flex-col justify-center gap-6 text-lg text-gray-300 max-w-lg" // Centered text vertically
         >
-          <p>
-            Hey there 👋 I’m Satya Dev, an 18-year-old computer science student
-            who thinks in code and dreams in algorithms. I’m obsessed with AI,
-            machine learning, and building things that automate the boring
-            stuff so humans can do better things — like chill or innovate.
-          </p>
-          <p>
-            I’m not here to follow the traditional path — I believe in smart
-            work over hard grind, and I’m constantly exploring how to turn
-            minimal effort into maximum results using tech. Whether it’s data
-            science, automation, or neural networks, I’m always learning,
-            experimenting, and building for impact.
-          </p>
+<p>
+  Hey there 👋 I’m Satya Dev — an 18-year-old CS student who&apos;d rather automate a task than do it twice. I&apos;m deep into AI and building smart stuff that saves time, solves problems, or just looks insanely cool.
+</p>
+<p>
+  I don’t believe in following the traditional path. I&apos;m all about smart work, fast moves, and making tech actually do the heavy lifting. From machine learning to automation, I’m constantly learning, building, breaking, and evolving — not just learning, but applying.
+</p>
+
           <div>
             <h3 className="text-2xl font-semibold text-white mb-4">
               🎯 Hobbies & Interests
